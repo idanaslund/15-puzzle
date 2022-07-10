@@ -1,9 +1,10 @@
 import React from 'react'
+import Board from 'Board'
 
 export const App = () => {
   return (
-    <div>
-      Find me in src/app.js!
-    </div>
+   <main>
+      <Board />
+   </main>
   )
 }
