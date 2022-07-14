@@ -11,31 +11,13 @@ export const isSolvable = (boxes) => {
     return Math.round(product) === 1
 }
 
-// export const isSolved = (boxes) => {
-//     for(let i = 0, l = boxes.length; i < l; i++) {
-//         if(boxes[i] !== i) {
-//             return false
-//         }
-//     }
-//     return true
-    
-// }
-
-
 export const isSolved = (boxes, n) => {
-      // from https://www.geeksforgeeks.org/program-check-array-sorted-not-iterative-recursive/
-  
-      // Array has one or no element or the
-      // rest are already checked and approved.
     if (n === 1 || n === 0){
     return true
     }
-      
-  
-      // Unsorted pair found (Equal values allowed)
+
     return boxes[n - 1] >= boxes[n - 2] && 
-    isSolved(boxes, n - 1)
-      
+    isSolved(boxes, n - 1)   
 }
 
 export const shuffle = (boxes) => {

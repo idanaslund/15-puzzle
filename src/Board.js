@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from "react"
-import { TheBoard, ShuffleButton } from "styles"   
+import React, {useEffect, useState} from "react"   
 import Box from "Box"
 import { BOX_COUNT } from "./constants"
-import { shuffle, isSolved } from "./helpers" 
+import { shuffle, isSolved } from "./functionality" 
+import { TheBoard, ShuffleButton } from "styles"
 
 
 const Board = () => {
@@ -17,6 +17,7 @@ const Board = () => {
         let zeroIndex = randomBoxes.indexOf(0)
         let valIndex = randomBoxes.indexOf(val)
     
+        // Finding empty slot by index
         if (valIndex + 5 === zeroIndex || valIndex - 5 === zeroIndex) {
             swap(valIndex, zeroIndex)
         } else if (valIndex + 1 === zeroIndex && zeroIndex % 5 !== 0 ) {
@@ -32,7 +33,7 @@ const Board = () => {
         temArray[valIndex] = 0
         setRandomBoxes(() => [...temArray])
 
-          // isSolved in case the last item ===0;
+          // isSolved in case the last item === 0;
     if (temArray[temArray.length - 1] === 0) {
         const gameWithNoEmptyBox = temArray.slice(temArray.length - 1, 1)
         if (isSolved(gameWithNoEmptyBox, gameWithNoEmptyBox.length)) {
@@ -40,7 +41,6 @@ const Board = () => {
       }
     }
     
-
     const handleBoxClick = (val) => {
         moveBox(val)
         console.log('I am clicked')
@@ -52,7 +52,6 @@ const Board = () => {
     }
 
     const winner = isSolved(boxes)
-    // const notSolved = !isSolved(boxes)
 
 return(
     <>
@@ -72,7 +71,7 @@ return(
         <ShuffleButton>
             {!winner ?
             (<div>Try to solve the puzzle</div>) :
-            (<div>Puzzle solved! <span>🤩</span></div>)}
+            (<div>Puzzle solved!</div>)}
 
             <button onClick={() => handleShuffleClick()}>Shuffle puzzle
             </button>
