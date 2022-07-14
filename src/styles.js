@@ -16,18 +16,38 @@ margin: 0 auto;
   width: 1025px;
 }
 `
+
+export const StyledHeader = styled.div`
+display: flex;
+justify-content: center;
+`
+
 export const TheBoard = styled.article`
-  font-family: 'Open Sans', sans-serif;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: 70px 70px 70px 70px 70px;
   display: grid;
   padding: 10px;
   background: #D3D3D3;
   border-radius: 5px;
 
+  @media ${devices.tablet} {
+    grid-template-columns: auto auto auto auto auto;
+  }
+  @media ${devices.desktop} {
+    grid-template-columns: auto auto auto auto auto;
+  }
+
   .styled-board {
-    margin: 5px;
+    margin: 1px;
     border-radius: 10px;
-    background-color: rgb(69, 227, 232);
+    background-color: #ADD8E6;
+    border: solid black 1px;
+
+    @media ${devices.tablet} {
+      margin: 5px;
+    }
+    @media ${devices.desktop} {
+      margin: 10px;
+    }
   }
 `
 
@@ -70,7 +90,8 @@ border-radius: 10px;
 
 export const ShuffleButton = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   margin: 20px;
 
   button {
@@ -83,6 +104,7 @@ export const ShuffleButton = styled.div`
     background-color: black;
     border-radius: 5px;
     border: none;
+    margin: 10px;
   }
 
   button:hover {

@@ -22,7 +22,7 @@ export const isSolvable = (boxes) => {
 // }
 
 
-export const isSolved = (arr, n) => {
+export const isSolved = (boxes, n) => {
       // from https://www.geeksforgeeks.org/program-check-array-sorted-not-iterative-recursive/
   
       // Array has one or no element or the
@@ -33,8 +33,8 @@ export const isSolved = (arr, n) => {
       
   
       // Unsorted pair found (Equal values allowed)
-    return arr[n - 1] >= arr[n - 2] && 
-    isSolved(arr, n - 1)
+    return boxes[n - 1] >= boxes[n - 2] && 
+    isSolved(boxes, n - 1)
       
 }
 

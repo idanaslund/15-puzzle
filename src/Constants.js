@@ -1,1 +1,1 @@
-export const BOX_COUNT = 16
+export const BOX_COUNT = 15

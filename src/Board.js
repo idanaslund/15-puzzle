@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react"
-import { TheBoard, ShuffleButton } from "styles"   //// StyledBoard,
+import { TheBoard, ShuffleButton } from "styles"   
 import Box from "Box"
-import { BOX_COUNT, BOARD_SIZE, GRID_SIZE } from "./constants"
-import { shuffle, isSolved } from "./helpers"   ////swap, canSwap,
+import { BOX_COUNT } from "./constants"
+import { shuffle, isSolved } from "./helpers" 
 
 
 const Board = () => {
@@ -17,11 +17,11 @@ const Board = () => {
         let zeroIndex = randomBoxes.indexOf(0)
         let valIndex = randomBoxes.indexOf(val)
     
-        if (valIndex + 4 === zeroIndex || valIndex - 4 === zeroIndex) {
+        if (valIndex + 5 === zeroIndex || valIndex - 5 === zeroIndex) {
             swap(valIndex, zeroIndex)
-        } else if (valIndex + 1 === zeroIndex && zeroIndex % 4 !== 0 ) {
+        } else if (valIndex + 1 === zeroIndex && zeroIndex % 5 !== 0 ) {
             swap(valIndex, zeroIndex)
-        } else if (valIndex - 1 === zeroIndex && (zeroIndex + 1) % 4 !== 0) {
+        } else if (valIndex - 1 === zeroIndex && (zeroIndex + 1) % 5 !== 0) {
             swap(valIndex, zeroIndex)
         }
       }
@@ -52,7 +52,7 @@ const Board = () => {
     }
 
     const winner = isSolved(boxes)
-
+    // const notSolved = !isSolved(boxes)
 
 return(
     <>
@@ -68,10 +68,12 @@ return(
                 )
             })}
         </TheBoard>
-
-        {winner && <div>Puzzle solved</div>}
         
         <ShuffleButton>
+            {!winner ?
+            (<div>Try to solve the puzzle</div>) :
+            (<div>Puzzle solved! <span>🤩</span></div>)}
+
             <button onClick={() => handleShuffleClick()}>Shuffle puzzle
             </button>
         </ShuffleButton>
