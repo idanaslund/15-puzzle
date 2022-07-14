@@ -1,19 +1,7 @@
-# Technigo React Starter App
+1. För att köra behöver följande installeras: `npm install` och `npm install --save styled-components`
+2. Kör med: `npm start`
 
-This app has been generated using `create-react-app`, then cleaned up a little so we have a project with just the elements we need to get started.
+Uppgiften tog mig någonstans runt 12 timmar att färdigställa, detta fördelat på tre tillfällen. Jag hade en tanke om att logiken skulle kännas enklare än den var och fick därför börja om efter ungefär halva tiden. Jag har nu ett fungerande pussel efter att ha gjort lite mer efterforskning i andras koder. En brist jag själv ser är att jag inte lyckats kontrollera om "vinnar-meddelandet" kommer att visas. 
 
-Add components in the `src` folder and use them in `src/app.js` to get started.
 
-## Usage
-
-1. On GitHub, click the 'use this template' button to create a new repo on your account
-1. Clone the new repo to your computer
-1. Install required dependencies with npm: `npm install`
-1. Start the project: `npm start`
-
-Alternatively, if you don't want a new git repo on your account;
-
-1. Download & extract the [latest release](https://github.com/Technigo/react-starter/releases/latest) from GitHub
-1. Open the directory in the terminal: `cd /path/to/react-starter`
-1. Install required dependencies with npm: `npm install`
-1. Start the project: `npm start`
+Skriv gärna några rader om hur lång tid det tog att implementera, eventuella antaganden samt brister du själv kan se, vad du är mest nöjd med tekniskt etc. när du skickar in för att vi lättare skall kunna bedöma det du gjort.
