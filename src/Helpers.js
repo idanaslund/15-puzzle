@@ -1,4 +1,4 @@
-import { BOX_COUNT, GRID_SIZE } from "./Constants"
+import { BOX_COUNT } from "./constants"
 
 // If random numbers are not solvable, randomize again.
 export const isSolvable = (boxes) => {
@@ -18,48 +18,35 @@ export const isSolvable = (boxes) => {
 //         }
 //     }
 //     return true
+    
 // }
 
-export const getIndex = (row, col) => {
-    return parseInt(row, 10) * GRID_SIZE + parseInt(col, 10)
-}
 
-export const getMatrixPosition = (index) => {
-    return {
-        row: Math.floor(index / GRID_SIZE),
-        col: index % GRID_SIZE
+export const isSolved = (arr, n) => {
+      // from https://www.geeksforgeeks.org/program-check-array-sorted-not-iterative-recursive/
+  
+      // Array has one or no element or the
+      // rest are already checked and approved.
+    if (n === 1 || n === 0){
+    return true
     }
+      
+  
+      // Unsorted pair found (Equal values allowed)
+    return arr[n - 1] >= arr[n - 2] && 
+    isSolved(arr, n - 1)
+      
 }
 
-export const getVisualPosition = (row, col, width, height) => {
-    return {
-        x: col * width,
-        y: row * height
-    }
+export const shuffle = (boxes) => {
+    const shuffledBoxes = [
+        ...boxes
+        .filter((t) => t !== boxes.length - 1)
+        .sort(() => Math.random() - 0.5),
+        boxes.length - 1
+    ]
+    return isSolvable(shuffledBoxes) && !isSolved(shuffledBoxes)
+    ? shuffledBoxes
+    : shuffle(shuffledBoxes)
 }
 
-// export const shuffle = (boxes) => {
-//     const shuffledBoxes = [
-//         ...boxes
-//         .filter((t) => t !== boxes.length - 1)
-//         .sort(() => Math.random() - 0.5),
-//         boxes.length - 1
-//     ]
-//     return isSolvable(shuffledBoxes) && !isSolved(shuffledBoxes)
-//     ? shuffledBoxes
-//     : shuffle(shuffledBoxes)
-// }
-
-// Can I swap boxes? Is the slot next to it empty.
-export const canSwap = (src, dest, GRID_SIZE) => {
-    const { row: srcRow, col: srcCol } =  getMatrixPosition(src, GRID_SIZE)
-    const { row: destRow, col: destCol } = getMatrixPosition(dest, GRID_SIZE)
-    return Math.abs(srcRow - destRow) + Math.abs(srcCol - destCol) === 1
-}
-
-// Move box to empty slot.
-export const swap = (boxes, src, dest) => {
-    const boxesResult = [...boxes]
-    [boxesResult[src], boxesResult[dest]] = [boxesResult[dest], boxesResult[src]]
-    return boxesResult
-}
