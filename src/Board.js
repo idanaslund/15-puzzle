@@ -43,12 +43,10 @@ const Board = () => {
     
     const handleBoxClick = (val) => {
         moveBox(val)
-        console.log('I am clicked')
     }
 
     const handleShuffleClick = () => {
         setRandomBoxes(() => shuffle(boxes))
-        console.log('Shuffle is clicked')
     }
 
     const winner = isSolved(boxes)
