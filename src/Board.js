@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react"   
 import Box from "Box"
-import { BOX_COUNT } from "./constants"
+import { BOX_COUNT, COLUMNS } from "./constants"
 import { shuffle, isSolved } from "./functionality" 
 import { TheBoard, ShuffleButton } from "styles"
 
@@ -18,11 +18,11 @@ const Board = () => {
         let valIndex = randomBoxes.indexOf(val)
     
         // Finding empty slot by index
-        if (valIndex + 5 === zeroIndex || valIndex - 5 === zeroIndex) {
+        if (valIndex + COLUMNS === zeroIndex || valIndex - COLUMNS === zeroIndex) {
             swap(valIndex, zeroIndex)
-        } else if (valIndex + 1 === zeroIndex && zeroIndex % 5 !== 0 ) {
+        } else if (valIndex + 1 === zeroIndex && zeroIndex % COLUMNS !== 0 ) {
             swap(valIndex, zeroIndex)
-        } else if (valIndex - 1 === zeroIndex && (zeroIndex + 1) % 5 !== 0) {
+        } else if (valIndex - 1 === zeroIndex && (zeroIndex + 1) % COLUMNS !== 0) {
             swap(valIndex, zeroIndex)
         }
       }
